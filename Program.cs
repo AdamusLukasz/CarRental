@@ -1,4 +1,7 @@
 
+using CarRental.Entities;
+using Microsoft.EntityFrameworkCore;
+
 namespace CarRental
 {
     public class Program
@@ -6,6 +9,10 @@ namespace CarRental
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // Add DbContext service
+
+            builder.Services.AddDbContext<CarRentalDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("CarRentalConnectionString")));
 
             // Add services to the container.
 
