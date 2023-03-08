@@ -1,6 +1,6 @@
 ﻿using CarRental.DTOs;
 
-namespace CarRental.Services.ServiceIntervaces
+namespace CarRental.Services.ServiceInterfaces
 {
     public interface IRentalService
     {

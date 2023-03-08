@@ -1,6 +1,6 @@
 ﻿using CarRental.DTOs;
 using CarRental.Entities;
-using CarRental.Services.ServiceIntervaces;
+using CarRental.Services.ServiceInterfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRental.Controllers

@@ -1,6 +1,6 @@
 using CarRental.Entities;
 using CarRental.Services;
-using CarRental.Services.ServiceIntervaces;
+using CarRental.Services.ServiceInterfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRental
