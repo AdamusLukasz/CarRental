@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CarRental.Controllers
 {
     [ApiController]
-    [Route("api/airports")]
+    [Route("api/locations")]
     public class LocationController : ControllerBase
     {
         private readonly ILocationService _locationService;
