@@ -6,6 +6,6 @@ namespace CarRental.Services.ServiceIntervaces
     {
         IEnumerable<RentalDTO> GetAll();
         void RentalCar(RentalDTO rental, int carId, int locationId);
-        void ReturnCar(RentalDTO rental, int carId, int locationtId);
+        void ReturnCar(int carId, int locationtId);
     }
 }

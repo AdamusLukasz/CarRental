@@ -50,9 +50,24 @@ namespace CarRental.Services
             _dbContext.SaveChanges();
         }
 
-        public void ReturnCar(RentalDTO rental, int carId, int locationtId)
+        public void ReturnCar(int carId, int locationId)
         {
-            throw new NotImplementedException();
+            var location = _dbContext.Locations
+                    .Include(a => a.Cars)
+                    .FirstOrDefault(a => a.Id == locationId);
+
+            var car = location.Cars.FirstOrDefault(a => a.Id == carId);
+
+            car.AvailabilityCount++;
+
+            var newRental = new Rental
+            {
+                IdOfRentalCar = car.Id,
+                IdOfRentalLocation = location.Id
+            };
+
+            _dbContext.Rentals.Add(newRental);
+            _dbContext.SaveChanges();
         }
     }
 }

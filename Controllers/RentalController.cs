@@ -30,5 +30,13 @@ namespace CarRental.Controllers
 
             return Ok();
         }
+
+        [HttpPost("returnCar")]
+        public ActionResult<Rental> ReturnCar([FromQuery]int carId, int locationId)
+        {
+            _rentalService.ReturnCar(carId, locationId);
+
+            return Ok();
+        }
     }
 }
