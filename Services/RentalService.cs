@@ -60,13 +60,13 @@ namespace CarRental.Services
 
             car.AvailabilityCount++;
 
-            var newRental = new Rental
-            {
-                IdOfRentalCar = car.Id,
-                IdOfRentalLocation = location.Id
-            };
+            // var newRental = new Rental
+            // {
+            //     IdOfRentalCar = car.Id,
+            //     IdOfRentalLocation = location.Id
+            // };
 
-            _dbContext.Rentals.Add(newRental);
+            // _dbContext.Rentals.Add(newRental);
             _dbContext.SaveChanges();
         }
     }

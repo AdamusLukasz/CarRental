@@ -44,6 +44,21 @@ function App() {
       });
   }
 
+  function handleSubmitReturn(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!choosenLocation || !chosenCar) {
+      return;
+    }
+    const url = `http://localhost:5000/api/rentals/returnCar?locationId=${choosenLocation.id}&carId=${chosenCar.id}`;
+    axios.post(url)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  
   return (
     <div>
         <form onSubmit={handleSubmitRental} >
@@ -79,6 +94,33 @@ function App() {
           </div>
           <div>
             <button type="submit">Rent car</button>
+          </div>
+        </form>
+        <form onSubmit={handleSubmitReturn}>
+          <div>
+            <select onChange={handleLocationChange}>
+              <option value="">Select location</option>
+              {locations.map((location) => (
+                <option key={location.id} value={location.id}>
+                  {location.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          {choosenLocation && (
+            <div>
+              <select onChange={handleCarChange}>
+                <option value="">Select car</option>
+                {choosenLocation.cars.map((car) => (
+                  <option key={car.id} value={car.id}>
+                    {car.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+          <div>
+            <button type="submit">Return car</button>
           </div>
         </form>
     </div>
