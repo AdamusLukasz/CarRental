@@ -1,4 +1,5 @@
-﻿using CarRental.Entities;
+﻿using CarRental.DTOs;
+using CarRental.Entities;
 using CarRental.Services.ServiceIntervaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,14 @@ namespace CarRental.Controllers
         {
             var rents = _rentalService.GetAll();
             return Ok(rents);
+        }
+
+        [HttpPost("rentalCar")]
+        public ActionResult<Rental> RentalCar([FromQuery] RentalDTO rent, int carId, int locationId)
+        {
+            _rentalService.RentalCar(rent, carId, locationId);
+
+            return Ok();
         }
     }
 }
