@@ -30,7 +30,7 @@ function App() {
     if (!choosenLocation || !chosenCar) {
       return;
     }
-    const url = `http://localhost:5000/api/rentals/rentalCar?airportId=${choosenLocation.id}&carId=${chosenCar.id}`;
+    const url = `http://localhost:5000/api/rentals/rentalCar?locationId=${choosenLocation.id}&carId=${chosenCar.id}`;
     axios.post(url)
       .then(response => {
         console.log(response.data);
@@ -39,7 +39,7 @@ function App() {
         console.log(error);
       });
   }
-
+  
   return (
     <div>
       <header>
@@ -66,6 +66,9 @@ function App() {
               </select>
             </div>
           )}
+          <div>
+            <button type="submit">Rent car</button>
+          </div>
         </form>
       </header>
     </div>
