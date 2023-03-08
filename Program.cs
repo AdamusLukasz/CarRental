@@ -1,5 +1,6 @@
-
 using CarRental.Entities;
+using CarRental.Services;
+using CarRental.Services.ServiceIntervaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRental
@@ -17,6 +18,8 @@ namespace CarRental
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddScoped<IRentalService, RentalService>();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
