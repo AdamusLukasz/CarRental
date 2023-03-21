@@ -23,13 +23,13 @@ namespace CarRental.Services
             return rentals;
         }
 
-        public void RentalCar(RentalDTO rent, int carId, int locationId)
+        public void RentCar(RentalPostDTO rent)
         {
             var location = _dbContext.Locations
                 .Include(a => a.Cars)
-                .FirstOrDefault(a => a.Id == locationId);
+                .FirstOrDefault(a => a.Id == rent.IdOfRentalAirport);
 
-            var car = location.Cars.FirstOrDefault(a => a.Id == carId);
+            var car = location.Cars.FirstOrDefault(a => a.Id == rent.IdOfRentalCar);
 
             if (car.AvailabilityCount == 0)
             {
@@ -59,14 +59,6 @@ namespace CarRental.Services
             var car = location.Cars.FirstOrDefault(a => a.Id == carId);
 
             car.AvailabilityCount++;
-
-            // var newRental = new Rental
-            // {
-            //     IdOfRentalCar = car.Id,
-            //     IdOfRentalLocation = location.Id
-            // };
-
-            // _dbContext.Rentals.Add(newRental);
             _dbContext.SaveChanges();
         }
     }

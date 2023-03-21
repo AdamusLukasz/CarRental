@@ -23,10 +23,10 @@ namespace CarRental.Controllers
             return Ok(rents);
         }
 
-        [HttpPost("rentalCar")]
-        public ActionResult<Rental> RentalCar([FromQuery] RentalDTO rent, int carId, int locationId)
+        [HttpPost("rentCar")]
+        public ActionResult<Rental> RentCar([FromQuery] RentalPostDTO rent)
         {
-            _rentalService.RentalCar(rent, carId, locationId);
+            _rentalService.RentCar(rent);
 
             return Ok();
         }
