@@ -42,8 +42,8 @@ namespace CarRental.Services
             {
                 StartDate = rent.StartDate,
                 EndDate = rent.EndDate,
-                IdOfRentalCar = car.Id,
-                IdOfRentalLocation = location.Id
+                CarId = car.Id,
+                LocationId = location.Id
             };
 
             _dbContext.Rentals.Add(newRental);

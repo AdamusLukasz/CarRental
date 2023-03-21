@@ -17,8 +17,8 @@ namespace CarRental.DTOs
                 Id = rental.Id,
                 StartDate = rental.StartDate,
                 EndDate = rental.EndDate,
-                IdOfRentalCar = rental.IdOfRentalCar,
-                IdOfRentalAirport = rental.IdOfRentalLocation
+                IdOfRentalCar = rental.CarId,
+                IdOfRentalAirport = rental.LocationId
             };
         }
     }
