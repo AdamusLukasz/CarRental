@@ -17,8 +17,11 @@ namespace CarRental.Entities
         {
             modelBuilder.Entity<Rental>(mb =>
             {
-                mb.HasData(new Rental { Id = 1, StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(5), IdOfRentalLocation = 1, IdOfRentalCar = 1 });
-                mb.HasData(new Rental { Id = 2, StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(10), IdOfRentalLocation = 2, IdOfRentalCar = 1 });
+                mb.Property(a => a.StartDate).IsRequired();
+                mb.Property(a => a.EndDate).IsRequired();
+
+                mb.HasData(new Rental { Id = 1,StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(5), IdOfRentalLocation = 1, IdOfRentalCar = 1 });
+                mb.HasData(new Rental { Id = 2, StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(10), IdOfRentalLocation = 2, IdOfRentalCar = 2 });
             });
 
             modelBuilder.Entity<Location>(mb =>
