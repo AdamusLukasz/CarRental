@@ -25,9 +25,7 @@ namespace CarRental.Services
 
         public void RentCar(RentalPostDTO rent)
         {
-            var location = _dbContext.Locations
-                .Include(a => a.Cars)
-                .FirstOrDefault(a => a.Id == rent.IdOfRentalAirport);
+            var location = FindLocation(rent.IdOfRentalLocation);
 
             var car = location.Cars.FirstOrDefault(a => a.Id == rent.IdOfRentalCar);
 
@@ -46,20 +44,29 @@ namespace CarRental.Services
                 LocationId = location.Id
             };
 
+            var rentalDays = (int)(newRental.EndDate - newRental.StartDate).TotalDays;
+
+            newRental.RentalPrice = rentalDays * car.RentalPricePerDay;
+
             _dbContext.Rentals.Add(newRental);
             _dbContext.SaveChanges();
         }
 
         public void ReturnCar(int carId, int locationId)
         {
-            var location = _dbContext.Locations
-                    .Include(a => a.Cars)
-                    .FirstOrDefault(a => a.Id == locationId);
+            var location = FindLocation(locationId);
 
             var car = location.Cars.FirstOrDefault(a => a.Id == carId);
 
             car.AvailabilityCount++;
             _dbContext.SaveChanges();
+        }
+
+        private Location FindLocation(int locationId)
+        {
+            return _dbContext.Locations
+                    .Include(a => a.Cars)
+                    .FirstOrDefault(a => a.Id == locationId);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace CarRental.DTOs
         public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public int RentalPrice { get; set; }
         public int IdOfRentalCar { get; set; }
         public int IdOfRentalAirport { get; set; }
 
@@ -17,6 +18,7 @@ namespace CarRental.DTOs
                 Id = rental.Id,
                 StartDate = rental.StartDate,
                 EndDate = rental.EndDate,
+                RentalPrice = rental.RentalPrice,
                 IdOfRentalCar = rental.CarId,
                 IdOfRentalAirport = rental.LocationId
             };

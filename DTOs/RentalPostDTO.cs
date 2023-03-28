@@ -7,7 +7,7 @@ namespace CarRental.DTOs
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int IdOfRentalCar { get; set; }
-        public int IdOfRentalAirport { get; set; }
+        public int IdOfRentalLocation { get; set; }
 
         public static RentalPostDTO ToRentalPostDTOMap(Rental rental)
         {
@@ -16,7 +16,7 @@ namespace CarRental.DTOs
                 StartDate = rental.StartDate,
                 EndDate = rental.EndDate,
                 IdOfRentalCar = rental.CarId,
-                IdOfRentalAirport = rental.LocationId
+                IdOfRentalLocation = rental.LocationId
             };
         }
     }
